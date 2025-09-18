@@ -1,0 +1,22 @@
+// "static void main" must be defined in a public class.
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        String s1= sc.next();
+        String s2= sc.next();
+        s2=s2.toLowerCase();
+        List<Character> result=new ArrayList<>();
+        for(char c:s1.toCharArray()){
+            char c1=Character.toLowerCase(c);
+            if(s2.indexOf(c1)== -1){
+                result.add(c);
+            }
+        }
+        StringBuilder ans = new StringBuilder();
+        for(char c:result){
+            ans.append(c);
+        }
+        System.out.print(ans.toString());
+    }
+}
