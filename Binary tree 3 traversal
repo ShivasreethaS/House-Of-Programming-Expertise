@@ -1,0 +1,60 @@
+// "static void main" must be defined in a public class.
+class node{
+    int data;
+    node left;
+    node right;
+    node(int val){
+        data=val;
+    }
+}
+public class Main {
+    static void inorder(node root){
+        if(root==null){
+            return;
+        }
+        inorder(root.left);
+        System.out.print(root.data+" ");
+        inorder(root.right);
+    }
+    static void preorder(node root){
+        if(root==null){
+            return;
+        }
+        System.out.print(root.data+" ");
+        preorder(root.left);
+        preorder(root.right);
+    }
+    static void postorder(node root){
+        if(root==null){
+            return;
+        }
+        postorder(root.left);
+        postorder(root.right);
+        System.out.print(root.data+" ");
+    }
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int val=sc.nextInt();
+        node root = new node(val);
+        Queue<node> q=new LinkedList<>();
+        q.add(root);
+        while(!q.isEmpty()){
+            node t=q.poll();
+            val=sc.nextInt();
+            if(val!= -1){
+                node nn=new node(val);
+                t.left=nn;
+                q.add(nn);
+            }
+            val=sc.nextInt();
+            if(val!= -1){
+                node nn=new node(val);
+                t.right=nn;
+                q.add(nn);
+            }
+        }
+        inorder(root);
+        preorder(root);
+        postorder(root);
+    }
+}
