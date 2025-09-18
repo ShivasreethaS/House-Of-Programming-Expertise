@@ -1,0 +1,42 @@
+import java.util.*;
+class Node{
+  int data;
+  Node next;
+  Node(int d){
+    data=d;
+    next=null;
+  }
+}
+class ll{
+   Node head=null;
+    Node prev=null;
+  void ins(int val){
+   
+    Node nn=new Node(val);
+    if(head==null){
+      head=nn;
+      prev=nn;
+    }else{
+      prev.next=nn;
+      prev=nn;
+    }
+  }
+  void dis(){
+    Node t=head;
+    while(t!=null){
+      System.out.print(t.data+" ");
+      t=t.next;
+    }
+  }
+}
+public class Main {
+    public static void main(String[] args) {
+      Scanner sc =new Scanner(System.in);
+      ll a=new ll();
+      while(sc.hasNext()){
+        int d=sc.nextInt();
+        a.ins(d);
+      }
+      a.dis();
+  }
+}
