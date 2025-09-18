@@ -1,0 +1,32 @@
+// "static void main" must be defined in a public class.
+
+import java.util.*;
+class node{
+    int data;
+    ArrayList<node> next;
+    node (int val)
+    {
+        data=val;
+        next=new ArrayList<>();
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        Queue<node> q=new LinkedList<>();//level order
+        int val = sc.nextInt();
+        node root=new node(val);
+        q.add(root);
+        while(!q.isEmpty()){
+            node qpe=q.poll();//queue's popped element aka t
+            System.out.print()
+            int c=sc.nextInt();//num of children for node in qpe 
+            for(int i=0;i<c;i++){
+                val=sc.nextInt();
+                node nn=new node(val);
+                qpe.next.add(nn);
+                q.add(nn);
+            }
+        }
+    }
+}
