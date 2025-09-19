@@ -1,9 +1,9 @@
 import java.io.*;
 import java.util.*;
 
-public class hourGlass {
+public class Solution {
 
-    public static void main(String[] args) {
+    public static void hourGlass(String[] args) {
         /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
         Scanner sc=new Scanner(System.in);
         int m,n;
@@ -21,7 +21,10 @@ public class hourGlass {
                 int s=arr[i][j]+arr[i][j+1]+arr[i][j+2]+arr[i+1][j+1]+arr[i+2][j]+arr[i+2][j+1]+arr[i+2][j+2];
                 maxSum=Math.max(maxSum,s);
             }
-        }
+        }if(m<3 || n<3){
+            System.out.print("-1");
+        }else{
         System.out.print(maxSum);
+        }
     }
 }
