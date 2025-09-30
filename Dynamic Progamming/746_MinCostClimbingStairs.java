@@ -14,3 +14,7 @@ class Solution {
         return Math.min(dp[n-1],dp[n-2]);
     }
 }
+
+//example 10 15 20 10 10
+//10 15 30 25 35
+//min-->25 || 35 ans:25
