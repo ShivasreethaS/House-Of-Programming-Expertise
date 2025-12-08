@@ -12,5 +12,6 @@ class factFromPast {
         for(int i=0;i<=s;i++){
             System.out.println(dp[i]);
         }
+        System.out.print(Arrays.toString(dp)); //prints as a list
     }
 }
