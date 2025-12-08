@@ -17,5 +17,16 @@ class uniquePath {
                 dp[i][j]=dp[i][j-1]+dp[i-1][j];
             }
         }System.out.print(dp[n-1][m-1]);
+//in 1D dp:
+        int[] dp=new int[m];
+        for(int i=0;i<m;i++){
+            dp[i]=1;
+        }
+        for(int i=1;i<n;i++){
+            for(int j=1;j<m;j++){
+            dp[j]=dp[j]+dp[j-1];
+            }
+        }
+        System.out.print(dp[m-1]);
     }
 }
