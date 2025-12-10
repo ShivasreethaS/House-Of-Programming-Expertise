@@ -1,3 +1,4 @@
+//in 2D DP
 import java.util.*;
 public class fuelPrice {
     public static void main(String[] args) {
@@ -21,6 +22,23 @@ public class fuelPrice {
         }
     }
     System.out.println(dp[c][amt]);
+    }
+}
+//in 1D DP
+import java.util.*;
+public class fuelPrice1 {
+    public static void main(String[] args) {
+    int[] cost={1,1,4,5,9};
+    int[] fuel={1,2,2,5,15};
+    int amt=10;
+    int n=cost.length;
+    int[] dp=new int[amt+1];
+    for(int i=0;i<amt;i++){
+        for(int j=amt;j>=cost[i];j--){
+            dp[j]=Math.max(dp[j],dp[j-cost[i]]+fuel[i]);
+        }
+    }
+    System.out.print(dp[amt]);
     }
 }
 
