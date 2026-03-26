@@ -1,0 +1,23 @@
+class Solution {
+    public int findContentChildren(int[] g, int[] s) {
+        int n,m,i=0,j=0;
+        //find length
+        n=g.length;
+        m=s.length;
+        //sort them so that we can match smallest greed with smallest cookie size
+        Arrays.sort(g);
+        Arrays.sort(s);
+        //traverse till end
+        while(i<n && j<m){
+            //when greed <= cookie size: move to next greed and cookie size
+            if(g[i]<=s[j]){
+                i++;
+                j++;
+            }//else go to next cookie size to know if it matches the curr greed
+            else{
+                j++;
+            }
+        }//return total child(greed) satisfied
+        return i;
+    }
+}
