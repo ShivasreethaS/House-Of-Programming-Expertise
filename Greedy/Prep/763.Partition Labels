@@ -1,0 +1,22 @@
+class Solution {
+    public List<Integer> partitionLabels(String s) {
+        int n=s.length();
+        //last arr to store each char's last occurence
+        int last[]=new int[26];
+        for(int i=0;i<n;i++){
+            last[s.charAt(i)-'a']=i;
+        }
+        //create list to store partitions
+        List<Integer> ans=new ArrayList<>();
+        int mx=0;//stores the partition end val
+        int j=0;//stores where next partition starts
+        for(int i=0;i<n;i++){
+            mx=Math.max(mx,last[s.charAt(i)-'a']);
+            //when max end == cur index(partition over)
+            if(mx==i){
+                ans.add(i-j+1);
+                j=i+1;//move to next char
+            }
+        }return ans;
+    }
+}
