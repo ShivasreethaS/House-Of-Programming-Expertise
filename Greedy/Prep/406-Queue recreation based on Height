@@ -1,0 +1,30 @@
+class Solution {
+    public int[][] reconstructQueue(int[][] people) {
+        //sort: desc--> if 1st val same then asc by 2nd val; else desc by 1st val
+        Arrays.sort(people,(a,b)-> {
+            if(a[0]==b[0])
+            return a[1]-b[1];
+            else
+            return b[0]-a[0];
+        });
+        ArrayList<ArrayList<Integer>> ans=new ArrayList<>();
+        int n=people.length;
+        //eg people arr:[[7,0],[7,1],[6,1],[5,0],[5,2],[4,4]]
+        for(int i=0;i<n;i++){
+            ArrayList<Integer> a=new ArrayList<>();
+            a.add(people[i][0]);//add the 1st val to 0th pos:7
+            a.add(people[i][1]);//add the 2nd val to 1th pos:0 => [7,0] in a
+            ans.add(people[i][1],a);// based on the val in 1th pos place 'a' in that loc of ans
+        }
+        //convert arraylist to arr[][]
+        int r=ans.size();
+        int c=ans.get(0).size();
+        int[][] res=new int[r][c];
+        for(int i=0;i<r;i++){
+            for(int j=0;j<c;j++){
+                res[i][j]=ans.get(i).get(j);
+            }
+        }
+        return res;
+    }
+}
