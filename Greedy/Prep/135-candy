@@ -1,0 +1,23 @@
+class Solution {
+    public int candy(int[] ratings) {
+        int total=0,sum=0;
+        int n=ratings.length;
+        int[] arr=new int[n];
+        //all children get 1 candy
+        Arrays.fill(arr,1);
+        //if right person has more rating then increment by left_candy + 1
+        for(int i=1;i<n;i++){
+            if(ratings[i]>ratings[i-1]){
+                arr[i]=arr[i-1]+1;
+            }
+        }//if left person has more rating then find max:right_candy+1 and prev val
+        for(int i=n-1;i>0;i--){
+            if(ratings[i-1]>ratings[i]){
+                arr[i-1]=Math.max(arr[i-1],arr[i]+1);
+            }
+        }//calculate sum of all candies in arr
+        for(int i=0;i<n;i++){
+            sum+=arr[i];
+        }return sum;
+    }
+}
