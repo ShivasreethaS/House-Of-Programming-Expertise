@@ -1,0 +1,15 @@
+
+class Solution {
+    public int maxProfit(int[] prices) {
+        int n=prices.length;
+        //initialize cost to calculate profit
+        int cost=0;
+        //traverse the prices[] array 
+        //only when the (cur_cost)>(prev_cost) add its diff to cost
+        for(int i=1;i<n;i++){
+            if(prices[i]>prices[i-1]){
+                cost+=prices[i]-prices[i-1];//diff=profit made{sell-buy}
+            }
+        }return cost;
+    }
+}
