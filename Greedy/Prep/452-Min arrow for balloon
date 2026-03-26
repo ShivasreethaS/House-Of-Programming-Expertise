@@ -1,0 +1,17 @@
+class Solution {
+    public int findMinArrowShots(int[][] points) {
+        //sort: asc based on the point where balloon ends
+        Arrays.sort(points,(a,b)->Integer.compare(a[1],b[1]));
+        //arrow 1 will be sent at 1st ballon's end & cur pos at the end of balloon one
+        int arrow=1,cur=points[0][1];
+        int n=points.length;
+        for(int i=1;i<n;i++){
+            //increase arrow when end(cur) can't accomodate next balloon's start 
+            if(points[i][0]>cur){
+                arrow++;
+                //change cur to end of the new balloon
+                cur=points[i][1];
+            }
+        }return arrow;
+    }
+}
