@@ -1,0 +1,20 @@
+class Solution {
+    public int minDeletions(String s) {
+        //map for frq
+        HashMap<Character,Integer> m= new HashMap<>();
+        for(char c:s.toCharArray()){
+            m.put(c,m.getOrDefault(c,0)+1);
+        }
+        //set to find min deletions
+        Set<Integer> s1=new HashSet<>();
+        int count=0;
+        for(int frq:m.values()){
+            //when frq is already in set decremnet and chck again, also increment count
+            while(s1.contains(frq) && frq>0){
+                frq--;
+                count++;
+            }
+            s1.add(frq);
+        }return count;
+    }
+}
