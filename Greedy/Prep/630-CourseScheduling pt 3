@@ -1,0 +1,20 @@
+class Solution {
+    public int scheduleCourse(int[][] courses) {
+        //sort:asc based on last day
+        Arrays.sort(courses,(a,b)->a[1]-b[1]);
+        //maxheap to store all the courses that are being done
+        PriorityQueue<Integer> pq=new PriorityQueue<>((a,b)->b-a);
+        int t=0;
+        for(int a[]:courses){
+            //add to t the no of days when taking a course
+            t+=a[0];
+            pq.add(a[0]);
+            //when total days exceeds the lastday remove
+            if(t>a[1]){
+                t-=pq.poll();
+            }
+        }
+        //total courses done in pq
+        return pq.size();
+    }
+}
