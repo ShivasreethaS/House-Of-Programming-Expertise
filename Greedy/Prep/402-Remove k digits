@@ -1,0 +1,31 @@
+class Solution {
+    public String removeKdigits(String num, int k) {
+        //create stack and push items when new item is lesser than prev item 
+        Stack<Character> s=new Stack<>();
+        int n=num.length();
+        for(int i=0;i<n;i++){
+            char c= num.charAt(i);
+            //pop the old larger val and put the new val till we have "k"
+            while(k>0 && !s.isEmpty() && s.peek()>c){
+                s.pop();
+                k--;
+            }s.add(c);
+        }
+        //if all in asc order we still need to get rid of last "k digits"
+        while(k>0){
+            s.pop();
+            k--;
+        }
+        StringBuilder sb=new StringBuilder();
+        while(!s.isEmpty()){
+            sb.append(s.pop());
+        }
+        //since lifo we need to reverse
+        sb.reverse();
+        //remove if any trailing zeros present
+        while(sb.length()!=0 && sb.charAt(0)=='0'){
+            sb.deleteCharAt(0);
+        }
+        return (sb.isEmpty())? "0": sb.toString();
+    }
+}
