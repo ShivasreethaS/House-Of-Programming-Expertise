@@ -1,0 +1,24 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+      Scanner sc=new Scanner(System.in);
+      int n=sc.nextInt();
+      int sq=n*n;
+      int r=0;
+      int revsq=rev(n,r)*rev(n,r);
+      if(sq==rev(revsq,r)){
+        System.out.println("Adam number");
+      }
+      else{
+        System.out.println("No");
+      }
+    }
+    public static int rev(int n,int r){
+      if(n==0){
+        return r;
+      }
+      r=(r*10)+(n%10);
+      return rev(n/10,r);
+    }
+}
