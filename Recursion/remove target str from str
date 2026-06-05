@@ -1,0 +1,22 @@
+import java.util.Scanner;
+
+public class Main {
+
+    static String removeSubstring(String str, String sub, String ans) {
+      if(str.length()==0){
+        return ans;
+      }
+      if((str.charAt(0)==sub.charAt(0)) && str.substring(0,sub.length()).equals(sub)){
+        return removeSubstring(str.substring(sub.length()),sub,ans);
+      }
+      ans += str.charAt(0);
+      return removeSubstring(str.substring(1),sub,ans);
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+        String sub = sc.nextLine();
+        String ans = "";
+        System.out.println(removeSubstring(str, sub, ans));
+    }
+}
