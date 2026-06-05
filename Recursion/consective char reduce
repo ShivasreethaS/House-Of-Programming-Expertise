@@ -1,0 +1,18 @@
+import java.util.Scanner;
+//ITERATIVE APPROACH
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine().toLowerCase();
+        String ans="";
+        int n=str.length();
+        int j=0;
+        ans+=str.charAt(0);
+        for(int i=1;i<n;i++){
+          if(str.charAt(i)!=ans.charAt(j)){
+            ans+=str.charAt(i);
+            j++;
+          }
+        }System.out.print(ans);
+    }
+}
