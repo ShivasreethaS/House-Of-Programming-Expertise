@@ -1,0 +1,49 @@
+import java.util.*;
+
+public class Main {
+    public static void deleteDeepNode(Node root, Node deepNode){
+      Queue<Node> q=new LinkedList<>();
+      q.add(root);
+      while(!q.isEmpty()){
+        Node qp=q.poll();
+        if(qp.left!=null){
+          if(qp.left==deepNode){
+            qp.left=null;
+            return;
+          }else{
+            q.add(qp.left);
+          }
+        }
+        if(qp.right!=null){
+         if(qp.right==deepNode){
+          qp.right=null;
+          return;
+         }else{
+          q.add(qp.right);
+         }
+        }
+      }
+      int deepNode=qpe.val;
+    }
+    }
+    public static void delete(Node root,int key){
+      if(root==null)return;
+      Queue<Node> q=new LinkedList<>();
+      q.add(root);
+      Node keyNode=null;
+      Node qpe=null;
+      while(!q.isEmpty()){
+        Node qpe=q.poll();
+        if(qpe.val==key){
+          Node keyNode=qpe;
+        }if(qpe.left!=null) q.add(qpe.left);
+        if(qpe.right!=null) q.add(qpe.right);
+      }
+      Node deepNode=qpe;
+      if(keyNode!=null)
+      {
+      deleteDeepNode(root,deepNode);
+      keyNode.val=deepNode.val;
+      }
+    }
+}
