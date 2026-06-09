@@ -1,0 +1,16 @@
+class Solution {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        //if no node or root has p.val or q.val then root will produce the other for sure so return root
+        if(root==null || root.val==p.val || root.val==q.val ){
+            return root;
+        }
+        TreeNode left=lowestCommonAncestor(root.left,p,q);
+        TreeNode right=lowestCommonAncestor(root.right,p,q);
+        //if both are present at diff sides then root is lca
+        if(left!=null && right!=null)
+            return root;
+        //if only one val is getting returned then that val must produce the other so its the lca
+        if(left!=null) return left;
+        else return right;
+    }
+}
