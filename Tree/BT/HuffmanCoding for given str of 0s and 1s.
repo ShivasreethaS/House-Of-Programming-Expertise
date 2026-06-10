@@ -1,3 +1,6 @@
+//input: 1001001 and root of the tree with char(A,B,C...) at leaf nodes
+//output: ACBDA(reference only)
+
 public class HuffmanDecoding {
 
     static void decode(String s, Node root) {
