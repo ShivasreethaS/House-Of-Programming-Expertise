@@ -1,0 +1,103 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+      Scanner sc =new Scanner(System.in);
+      int vertex=sc.nextInt();
+      int edge=sc.nextInt();
+      // //adj matrix
+      // int graph[][]=new int[vertex+1][vertex+1];
+      // for(int row=0;row<edge;row++){
+      //   int vertex1=sc.nextInt();
+      //   int vertex2=sc.nextInt();
+      //   graph[vertex1][vertex2]=1;
+      //   graph[vertex2][vertex1]=1;
+      // }
+      // //print adj matrix
+      // for(int i=1;i<=vertex;i++){
+      //     for(int j=1;j<=vertex;j++){
+      //       System.out.print(graph[i][j]+" ");
+      //     }
+      //     System.out.println();
+      // }
+
+      //adj list
+      ArrayList<ArrayList<Integer>> graph=new ArrayList<>();
+      for(int ind=0;ind<vertex+1;ind++){
+        graph.add(new ArrayList<>());
+      }
+      for(int ind=0;ind<edge; ind++){
+        int u=sc.nextInt();
+        int v=sc.nextInt();
+        graph.get(u).add(v);
+        graph.get(v).add(u);
+      }
+
+      // //BFS call
+      // BFS(graph,1);
+      
+      // //DFS call
+      // boolean vis[]=new boolean[vertex+1];
+      // DFS(graph,vis,1);
+
+      //CountingComponents call
+      System.out.print(countOfConnectedComponent(graph,vertex));
+      // //print adj list
+      // for(int i=0;i<vertex+1;i++){
+      //   System.out.print(i+"->");
+      //   for(int v:graph.get(i)){
+      //     System.out.print(v+" ");
+      //   }
+      //   System.out.println();
+      // }
+
+    }
+
+
+    //BFS 
+    //we use a visited array & queue to get the next element
+    public static void BFS(ArrayList<ArrayList<Integer>>graph,int start){
+       boolean[] vis=new boolean[graph.size()];
+       Queue<Integer> q=new LinkedList<>();
+       vis[start]=true;
+       q.add(start);
+       while(!q.isEmpty()){
+       int qpv=q.poll();
+       //print BFS traversal
+       System.out.println(qpv);
+       for(int neigh: graph.get(qpv)){
+         if(!vis[neigh]){
+           vis[neigh]=true;
+           q.add(neigh);
+           }
+         }
+       }  
+     }
+
+     //DFS
+     //we use a visited array & recursive calls
+     public static void DFS(ArrayList<ArrayList<Integer>> graph,boolean vis[],int start){
+      vis[start]=true;
+      //dfs traversal
+      //System.out.println(start+" ");
+      for(int ind: graph.get(start)){
+        if(!vis[ind]){
+          DFS(graph,vis,ind);
+        }
+      }
+     }
+
+     //Connected Component
+      public static int countOfConnectedComponent(ArrayList<ArrayList<Integer>> graph,int vertex){
+      boolean vis[]=new boolean[graph.size()];
+      int count=0;
+      for(int i=0;i<vertex;i++){
+        if(!vis[i]){
+          DFS(graph,vis,i);
+          count++;
+        }
+      }
+      return count;
+      }
+
+}
