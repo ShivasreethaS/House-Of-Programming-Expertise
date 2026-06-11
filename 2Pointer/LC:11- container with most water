@@ -1,0 +1,22 @@
+//i/p: height array
+//place two pointers on either side get area then move the smaller height and compare area... finally print the max area
+class Solution {
+    public int maxArea(int[] height) {
+        int mx=0,cur=0,h=0,w=0;
+        int front=0,end=height.length-1;
+        while(front<end){
+            //width for area calculation
+            w=end-front;
+            if(height[front]<height[end]){
+                h=height[front];
+                front++;
+            }else{
+                h=height[end];
+                end--;
+            }
+            //current iteration area
+            cur=h*w;
+            mx=Math.max(mx,cur);
+        }return mx;
+    }
+}
