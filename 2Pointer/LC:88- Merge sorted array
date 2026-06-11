@@ -1,3 +1,5 @@
+//use 3 ptr one for end of nums1 one for nums2 last element and one for nums1 last element.
+//compare the last elements of both arrays and place the greater one at the end of nums1 array.
 class Solution {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
         int i=m-1;
