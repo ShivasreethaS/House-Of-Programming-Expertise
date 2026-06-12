@@ -1,0 +1,27 @@
+class Solution {
+    public int totalFruit(int[] fruits) {
+        HashMap<Integer,Integer> map=new HashMap<>();
+        int start=0,end=0,mx=0;
+        //start prt to point the first fruit
+        //end is used for iteration
+        while(end<fruits.length){
+            //put fruit val as key and get freq
+            map.put(fruits[end],map.getOrDefault(fruits[end],0)+1);
+            //when map size becomes 3 or more(only 2 types are allowed)
+            while(map.size()>=3){
+                //decrement the value for the first element in map
+                map.put(fruits[start],map.get(fruits[start])-1);
+                //this is done till any one becomes 0 and when it does remove it to get only 2 keys in map
+                if(map.get(fruits[start])==0){
+                    map.remove(fruits[start]);
+                }
+                //increment start to move to the next first element
+                start++;
+            }
+            //get the max size of elements in map
+            mx=Math.max(mx,end-start+1);
+            end++;
+        }
+        return mx;
+    }
+}
